@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        android:text="Mis productos"
+        android:textAlignment="center"
+        android:textSize="40dp"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@color/material_dynamic_neutral60"
+        android:paddingHorizontal="40dp"
+        android:paddingVertical="10dp"
+        android:orientation="horizontal"
+        >
+
+        <LinearLayout
+            android:id="@+id/inicioLayoutProductos"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="5dp"
+            >
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:src="@drawable/home"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="Inicio"
+                android:textAlignment="center"
+                android:padding="10dp"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="5dp"
+            android:background="@drawable/rounded_background"
+            >
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:src="@drawable/misproductos"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="Mis productos"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/perfilLayoutProductos"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="5dp"
+            >
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:src="@drawable/perfil"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="Perfil"
+                android:textAlignment="center"
+                android:padding="10dp"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/mapaLayoutProductos"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="5dp"
+            >
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:src="@drawable/map"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:text="Mapa"
+                android:textAlignment="center"
+                android:layout_height="40dp"
+                android:padding="10dp"
+                />
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+        >
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            >
+            <TableLayout
+                android:id="@+id/tablaProductos"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                >
+
+                <TableRow>
+
+                    <TextView
+                        android:text="Seleccionar"
+                        android:textSize="25dp"
+                        android:padding="10dp"
+                        />
+
+                    <TextView
+                        android:text="Nombre producto"
+                        android:textSize="25dp"
+                        android:padding="10dp"
+                        />
+
+                    <TextView
+                        android:text="Precio"
+                        android:textSize="25dp"
+                        android:padding="10dp"
+                        />
+
+                    <TextView
+                        android:text="Cantidad"
+                        android:textSize="25dp"
+                        android:padding="10dp"
+                        />
+
+                    <TextView
+                        android:text="Imagen"
+                        android:textSize="25dp"
+                        android:padding="10dp"
+                        />
+
+                    <TextView
+                        android:text="Estado"
+                        android:textSize="25dp"
+                        android:padding="10dp"
+                        />
+
+                </TableRow>
+            </TableLayout>
+        </LinearLayout>
+
+    </HorizontalScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="100dp"
+        >
+        <Button
+            android:id="@+id/botonEliminar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Eliminar Seleccionados"
+            android:layout_marginHorizontal="60dp"
+            android:layout_gravity="center"/>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

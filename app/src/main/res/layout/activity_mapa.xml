@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+    <Spinner
+        android:id="@+id/mapTypeSpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:minHeight="48dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <org.osmdroid.views.MapView
+        android:id="@+id/mapView"
+        android:background="@color/black"
+        android:layout_width="400dp"
+        android:layout_height="600dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@color/material_dynamic_neutral60"
+        android:paddingHorizontal="40dp"
+        android:paddingVertical="10dp"
+        android:orientation="horizontal"
+        >
+
+        <LinearLayout
+            android:id="@+id/inicioLayoutMapa"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="5dp"
+            >
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:src="@drawable/home"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:padding="10dp"
+                android:text="Inicio"
+                android:textAlignment="center"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/misProductosLayoutMapa"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="5dp"
+            >
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:src="@drawable/misproductos"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Mis productos"
+                android:textAlignment="center"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/perfilLayoutMapa"
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="5dp"
+            >
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:src="@drawable/perfil"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:text="Perfil"
+                android:textAlignment="center"
+                android:layout_height="40dp"
+                android:padding="10dp"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="80dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="5dp"
+            android:background="@drawable/rounded_background"
+            >
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:src="@drawable/map"
+                />
+            <TextView
+                android:layout_width="match_parent"
+                android:text="Mapa"
+                android:textAlignment="center"
+                android:layout_height="40dp"
+                android:padding="10dp"
+                android:textColor="@color/white"
+                />
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
