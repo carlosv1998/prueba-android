@@ -3,10 +3,12 @@ package com.example.pruebaandroid;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.LinearLayout;
 
@@ -40,7 +42,10 @@ public class MapaActivity extends AppCompatActivity  {
     private FusedLocationProviderClient fusedLocationClient;
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1;
     private MapView mapView;
+    private int marcador = 1;
+    private Marker marker;
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -121,6 +126,38 @@ public class MapaActivity extends AppCompatActivity  {
         } else {
             obtenerUbicacion();
         }
+
+        mapView.setOnTouchListener(new MapView.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                    // Obtener la ubicación del clic en el mapa
+                    GeoPoint clickedPoint = (GeoPoint) mapView.getProjection().fromPixels((int) event.getX(), (int) event.getY());
+                    if (marker == null) {
+                        // Crear un nuevo marcador si no existe
+                        marker = new Marker(mapView);
+                        marker.setPosition(clickedPoint);
+                        marker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
+                        marker.setTitle("Marcador");
+                        marker.setSnippet("Marcador en: " + clickedPoint.getLatitude() + ", " + clickedPoint.getLongitude());
+
+                        // Agregar el marcador al mapa
+                        mapView.getOverlays().add(marker);
+                    } else {
+                        // Mover el marcador existente a la nueva posición
+                        marker.setPosition(clickedPoint);
+                        marker.setTitle("Marcador");
+                        marker.setSnippet("Marcador en: " + clickedPoint.getLatitude() + ", " + clickedPoint.getLongitude());
+                    }
+
+                    // Actualizar el mapa para mostrar el marcador
+                    mapView.invalidate();
+                    v.performClick();
+                }
+                return false; // Devolver false para permitir que el evento continúe
+
+            }
+        });
 
 
         inicioLayout.setOnClickListener(new View.OnClickListener() {
