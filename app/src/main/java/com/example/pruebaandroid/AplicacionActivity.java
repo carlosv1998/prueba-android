@@ -1,15 +1,22 @@
 package com.example.pruebaandroid;
 
 import android.content.Intent;
+import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.webkit.WebSettings;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.MediaController;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.VideoView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -21,7 +28,9 @@ public class AplicacionActivity extends AppCompatActivity{
     private TextView textoCargandoLogo;
     private ImageView logoInicio;
     private ProgressBar barraProgresoLogo;
+    MediaPlayer mediaPlayer;
 
+    VideoView videoView;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,43 +49,36 @@ public class AplicacionActivity extends AppCompatActivity{
         LinearLayout perfilLayout = findViewById(R.id.perfilLayoutInicio);
         LinearLayout mapaLayout = findViewById(R.id.mapaLayoutInicio);
 
+        videoView = findViewById(R.id.video);
+        String videoPath = "android.resource://" + getPackageName() + "/" + R.raw.video;
+        Uri uri = Uri.parse(videoPath);
+        videoView.setVideoURI(uri);
+        MediaController mediaController = new MediaController(this);
+        videoView.setMediaController(mediaController);
+        mediaController.setAnchorView(videoView);
+        videoView.start();
 
-        // se establecen las variables para la carga de la imagen
-        textoCargandoLogo = findViewById(R.id.textoCargandoLogo);
-        logoInicio = findViewById(R.id.logoInicio);
-        barraProgresoLogo = findViewById(R.id.barraProgresoLogo);
 
+        WebView webView = findViewById(R.id.link);
+        WebSettings webSettings = webView.getSettings();
+        webSettings.setJavaScriptEnabled(true);
+        String videoUrl = "https://www.youtube.com/embed/wf4F2-9UXUo";
+        webView.setWebViewClient(new WebViewClient());
+        webView.loadUrl(videoUrl);
 
-        // se crea un thread y se sobreescribe el método run, que simulará un retardo de 4 segundos para posteriormente seguir con el código
-        Thread thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    Thread.sleep(4000);
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-                            // cuando pasen los 4 segundos se establecerá el mensaje y la barra de carga en invisible
-                            // y la imagen se establecerá como visible, para simular una carga
-                            barraProgresoLogo.setVisibility(View.GONE);
-                            textoCargandoLogo.setVisibility(View.GONE);
-                            logoInicio.setVisibility(View.VISIBLE);
-                            logoInicio.setImageResource(R.drawable.logo);
-                        }
-                    });
-                }catch (InterruptedException e){
-                    e.printStackTrace();
-                }
-            }
-        });
-
-        // se inicia el thread al cargar la activity
-        thread.start();
 
 
         misProductosLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mediaPlayer = MediaPlayer.create(AplicacionActivity.this, R.raw.cambio);
+                mediaPlayer.start();
+                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        mp.release();
+                    }
+                });
                 Intent intent = new Intent(AplicacionActivity.this, MisProductosActivity.class);
                 startActivity(intent);
             }
@@ -85,6 +87,14 @@ public class AplicacionActivity extends AppCompatActivity{
         perfilLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mediaPlayer = MediaPlayer.create(AplicacionActivity.this, R.raw.cambio);
+                mediaPlayer.start();
+                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        mp.release();
+                    }
+                });
                 Intent intent = new Intent(AplicacionActivity.this, PerfilActivity.class);
                 startActivity(intent);
             }
@@ -93,6 +103,14 @@ public class AplicacionActivity extends AppCompatActivity{
         mapaLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mediaPlayer = MediaPlayer.create(AplicacionActivity.this, R.raw.cambio);
+                mediaPlayer.start();
+                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        mp.release();
+                    }
+                });
                 Intent intent = new Intent(AplicacionActivity.this, MapaActivity.class);
                 startActivity(intent);
             }

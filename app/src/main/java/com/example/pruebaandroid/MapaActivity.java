@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.MotionEvent;
@@ -45,11 +46,15 @@ public class MapaActivity extends AppCompatActivity  {
     private int marcador = 1;
     private Marker marker;
 
+    MediaPlayer mediaPlayer;
+
     @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mapa);
+
+
 
         // variables para la "barra de navegacion"
         LinearLayout inicioLayout = findViewById(R.id.inicioLayoutMapa);
@@ -163,6 +168,14 @@ public class MapaActivity extends AppCompatActivity  {
         inicioLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mediaPlayer = MediaPlayer.create(MapaActivity.this, R.raw.cambio);
+                mediaPlayer.start();
+                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        mp.release();
+                    }
+                });
                 Intent intent = new Intent(MapaActivity.this, AplicacionActivity.class);
                 startActivity(intent);
             }
@@ -171,6 +184,14 @@ public class MapaActivity extends AppCompatActivity  {
         productosLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mediaPlayer = MediaPlayer.create(MapaActivity.this, R.raw.cambio);
+                mediaPlayer.start();
+                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        mp.release();
+                    }
+                });
                 Intent intent = new Intent(MapaActivity.this, MisProductosActivity.class);
                 startActivity(intent);
             }
@@ -179,6 +200,14 @@ public class MapaActivity extends AppCompatActivity  {
         perfilLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mediaPlayer = MediaPlayer.create(MapaActivity.this, R.raw.cambio);
+                mediaPlayer.start();
+                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        mp.release();
+                    }
+                });
                 Intent intent = new Intent(MapaActivity.this, PerfilActivity.class);
                 startActivity(intent);
             }

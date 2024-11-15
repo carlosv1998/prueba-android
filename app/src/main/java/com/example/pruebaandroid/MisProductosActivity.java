@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Color;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -34,6 +35,8 @@ public class MisProductosActivity extends AppCompatActivity {
     TableLayout tablaProductos;
 
     Button botonAgregar, botonEliminar, botonModificar;
+
+    MediaPlayer mediaPlayer;
 
     private List<CheckBox> checkBoxes = new ArrayList<>();
 
@@ -70,6 +73,14 @@ public class MisProductosActivity extends AppCompatActivity {
 
         botonEliminar.setOnClickListener(v -> {
             List<CheckBox> checkBoxesParaEliminar = new ArrayList<>();
+            mediaPlayer = MediaPlayer.create(MisProductosActivity.this, R.raw.sonido);
+            mediaPlayer.start();
+            mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                @Override
+                public void onCompletion(MediaPlayer mp) {
+                    mp.release();
+                }
+            });
 
             for (CheckBox checkBox : checkBoxes) {
                 if (checkBox.isChecked()) {
@@ -84,6 +95,14 @@ public class MisProductosActivity extends AppCompatActivity {
         });
 
         botonModificar.setOnClickListener(v -> {
+            mediaPlayer = MediaPlayer.create(MisProductosActivity.this, R.raw.sonido);
+            mediaPlayer.start();
+            mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                @Override
+                public void onCompletion(MediaPlayer mp) {
+                    mp.release();
+                }
+            });
             if (!verificarInputs()) return;
             for (CheckBox checkBox : checkBoxes) {
                 if (checkBox.isChecked()) {
@@ -131,6 +150,14 @@ public class MisProductosActivity extends AppCompatActivity {
         inicioLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mediaPlayer = MediaPlayer.create(MisProductosActivity.this, R.raw.cambio);
+                mediaPlayer.start();
+                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        mp.release();
+                    }
+                });
                 Intent intent = new Intent(MisProductosActivity.this, AplicacionActivity.class);
                 startActivity(intent);
             }
@@ -139,6 +166,14 @@ public class MisProductosActivity extends AppCompatActivity {
         perfilLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mediaPlayer = MediaPlayer.create(MisProductosActivity.this, R.raw.cambio);
+                mediaPlayer.start();
+                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        mp.release();
+                    }
+                });
                 Intent intent = new Intent(MisProductosActivity.this, PerfilActivity.class);
                 startActivity(intent);
             }
@@ -147,6 +182,14 @@ public class MisProductosActivity extends AppCompatActivity {
         mapaLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                mediaPlayer = MediaPlayer.create(MisProductosActivity.this, R.raw.cambio);
+                mediaPlayer.start();
+                mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                    @Override
+                    public void onCompletion(MediaPlayer mp) {
+                        mp.release();
+                    }
+                });
                 Intent intent = new Intent(MisProductosActivity.this, MapaActivity.class);
                 startActivity(intent);
             }
@@ -261,6 +304,14 @@ public class MisProductosActivity extends AppCompatActivity {
     }
 
     private void onClickAgregar (View view){
+        mediaPlayer = MediaPlayer.create(MisProductosActivity.this, R.raw.sonido);
+        mediaPlayer.start();
+        mediaPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(MediaPlayer mp) {
+                mp.release();
+            }
+        });
 
         if (!verificarInputs()) return;
 
