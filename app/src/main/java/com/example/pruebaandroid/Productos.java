@@ -1,14 +1,16 @@
 package com.example.pruebaandroid;
 
 public class Productos {
+    int id;
     String nombre;
-    String precio;
-    String cantidad;
+    int precio;
+    int cantidad;
     String estado;
 
     public Productos () {}
 
-    public Productos(String nombre, String precio, String cantidad, String estado) {
+    public Productos(int id, String nombre, int precio, int cantidad, String estado) {
+        this.id = id;
         this.nombre = nombre;
         this.precio = precio;
         this.cantidad = cantidad;

@@ -15,6 +15,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PruebaAndroid"
+
         tools:targetApi="31">
         <activity
             android:name=".MainActivity"
@@ -28,7 +29,7 @@
 
         <activity android:name=".RegistroActivity"></activity>
         <activity android:name=".AplicacionActivity"></activity>
-        <activity android:name=".MisProductosActivity"></activity>
+        <activity android:name=".MisProductosActivity" android:windowSoftInputMode="adjustNothing"></activity>
         <activity android:name=".PerfilActivity"></activity>
         <activity android:name=".MapaActivity"></activity>
 
