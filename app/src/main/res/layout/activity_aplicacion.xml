@@ -32,30 +32,20 @@
 
     </LinearLayout>
 
-    <LinearLayout
-        android:id="@+id/videoLayout"
+    <VideoView
+        android:id="@+id/video"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="200dp"
         app:layout_constraintTop_toBottomOf="@+id/textoInicio"
-        >
-        <VideoView
-            android:id="@+id/video"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            />
-    </LinearLayout>
+        />
 
-    <LinearLayout
+    <WebView
+        android:id="@+id/link"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
-        app:layout_constraintTop_toBottomOf="@+id/videoLayout"
-        >
-        <WebView
-            android:id="@+id/link"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            />
-    </LinearLayout>
+        android:layout_height="200dp"
+        android:layout_marginTop="5dp"
+        app:layout_constraintTop_toBottomOf="@+id/video"
+        />
 
 
 
